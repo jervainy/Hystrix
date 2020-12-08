@@ -24,6 +24,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * 用于合并请求，必须与{@link HystrixCommand}一起使用
  * This annotation is used to collapse some commands into a single backend dependency call.
  * This annotation should be used together with {@link HystrixCommand} annotation.
  * <p/>

@@ -19,9 +19,10 @@ import com.netflix.hystrix.HystrixObservable;
 import rx.Observable;
 
 /**
+ * 被观察的命令的两种运行模式
  * Hystrix observable command can be executed in two different ways:
- * eager - {@link HystrixObservable#observe()},
- * lazy -  {@link HystrixObservable#toObservable()}.
+ * eager 主动执行 - {@link HystrixObservable#observe()},
+ * lazy 被动执行（懒执行） -  {@link HystrixObservable#toObservable()}.
  * <p/>
  * This enum is used to specify desire execution mode.
  * <p/>
@@ -30,11 +31,13 @@ import rx.Observable;
 public enum ObservableExecutionMode {
 
     /**
+     * 当命令被订阅时才会执行
      * This mode lazily starts execution of the command only once the {@link Observable} is subscribed to.
      */
     LAZY,
 
     /**
+     * 与{@link com.netflix.hystrix.HystrixCommand#queue()}一致
      * This mode eagerly starts execution of the command the same as {@link com.netflix.hystrix.HystrixCommand#queue()}
      * and {@link com.netflix.hystrix.HystrixCommand#execute()}.
      */

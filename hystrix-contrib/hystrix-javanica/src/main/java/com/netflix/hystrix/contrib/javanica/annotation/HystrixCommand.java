@@ -33,6 +33,7 @@ import java.lang.annotation.Target;
 public @interface HystrixCommand {
 
     /**
+     * 默认为当前方法所在类的类名
      * The command group key is used for grouping together commands such as for reporting,
      * alerting, dashboards or team/library ownership.
      * <p/>
@@ -43,6 +44,7 @@ public @interface HystrixCommand {
     String groupKey() default "";
 
     /**
+     * 默认为方法名
      * Hystrix command key.
      * <p/>
      * default => the name of annotated method. for example:
@@ -67,6 +69,7 @@ public @interface HystrixCommand {
     String threadPoolKey() default "";
 
     /**
+     * fallbackMethod必须与HystrixCommand存在于相同的类中，并且拥有相同的方法签名
      * Specifies a method to process fallback logic.
      * A fallback method should be defined in the same class where is HystrixCommand.
      * Also a fallback method should have same signature to a method which was invoked as hystrix command.
